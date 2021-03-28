@@ -131,3 +131,60 @@ max    2012.000000  15.000000  12.000000
 ’‘’
 ```
 
+运用**Pandas**和**Numpy**分析索契冬奥会各国的奖牌数量
+
+```python
+from pandas import DataFrame, Series
+
+countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
+              'Netherlands', 'Germany', 'Switzerland', 'Belarus',
+              'Austria', 'France', 'Poland', 'China', 'Korea', 
+              'Sweden', 'Czech Republic', 'Slovenia', 'Japan',
+              'Finland', 'Great Britain', 'Ukraine', 'Slovakia',
+             'Italy', 'Latvia', 'Australia', 'Croatia', 'Kazakhstan']
+gold = [13, 11, 10, 9, 8, 8, 6, 5, 4, 4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2, 2, 1, 0]
+bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
+    
+olympic_medal_counts = pd.DataFrame({
+'Countries': pd.Series(countries),
+'Gold': pd.Series(gold),
+'Silver': pd.Series(silver),
+'Bronze': pd.Series(bronze)
+})
+olympic_medal_counts_df = pd.DataFrame(olympic_medal_counts)
+    
+print(olympic_medal_counts_df)
+
+'''
+# 输出结果
+         Countries  Gold  Silver  Bronze
+0     Russian Fed.    13      11       9
+1           Norway    11       5      10
+2           Canada    10      10       5
+3    United States     9       7      12
+4      Netherlands     8       7       9
+5          Germany     8       6       5
+6      Switzerland     6       3       2
+7          Belarus     5       0       1
+8          Austria     4       8       5
+9           France     4       4       7
+10          Poland     4       1       1
+11           China     3       4       2
+12           Korea     3       3       2
+13          Sweden     2       7       6
+14  Czech Republic     2       4       2
+15        Slovenia     2       2       4
+16           Japan     1       4       3
+17         Finland     1       3       1
+18   Great Britain     1       1       2
+19         Ukraine     1       0       1
+20        Slovakia     1       0       0
+21           Italy     0       2       6
+22          Latvia     0       2       2
+23       Australia     0       2       1
+24         Croatia     0       1       0
+25      Kazakhstan     0       0       1
+'''
+
+```
