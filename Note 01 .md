@@ -24,7 +24,7 @@ Cammings|38|71.83|True
 Heikkinen|26|NaN|True
 Allen|35|8.05|False
 
-1. 创建一个名为d的python字典，其中每个键都是一列的名称，而对应的值则是一个python序列
+- 创建一个名为d的python字典，其中每个键都是一列的名称，而对应的值则是一个python序列
 ```python
 import pandas as pd     # 下边代码只是示例，并不能正确执行
 d = {'name:' Series(['Braund','Cummings','Heikkinen','Allen'],index = ['a','b','c','d']),
@@ -55,3 +55,79 @@ print(cuteness > 3)
 print("")
 print(cuteness[cuteness > 3])
 ```
+- 创建**DateFrame**
+```python
+import numpy as np
+import pandas as pd
+
+# 建立二维数据结构
+
+data = {'year':[2010,2011,2012,2011,2012,2010,2011,2012],
+       'team':['Bears','Bears','Bears','Packers','Packers','Lions','Lions','Lions'],
+       'wins':[11,8,10,15,11,6,10,4],
+       'losses':[5,8,6,1,5,10,6,12]}
+football = pd.DataFrame(data)
+print(football)
+
+'''
+输出结果
+   year     team  wins  losses
+0  2010    Bears    11       5
+1  2011    Bears     8       8
+2  2012    Bears    10       6
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+5  2010    Lions     6      10
+6  2011    Lions    10       6
+7  2012    Lions     4      12
+'''
+
+##
+
+data = {'year':[2010,2011,2012,2011,2012,2010,2011,2012],
+       'team':['Bears','Bears','Bears','Packers','Packers','Lions','Lions','Lions'],
+       'wins':[11,8,10,15,11,6,10,4],
+       'losses':[5,8,6,1,5,10,6,12]}
+football = pd.DataFrame(data)
+print(football.dtypes)
+print("")
+print(football.describe())
+print("")
+print(football.head())
+print("")
+print(football.tail())
+
+‘’‘
+输出结果
+year       int64
+team      object
+wins       int64
+losses     int64
+dtype: object
+
+              year       wins     losses
+count     8.000000   8.000000   8.000000
+mean   2011.125000   9.375000   6.625000
+std       0.834523   3.377975   3.377975
+min    2010.000000   4.000000   1.000000
+25%    2010.750000   7.500000   5.000000
+50%    2011.000000  10.000000   6.000000
+75%    2012.000000  11.000000   8.500000
+max    2012.000000  15.000000  12.000000
+
+   year     team  wins  losses
+0  2010    Bears    11       5
+1  2011    Bears     8       8
+2  2012    Bears    10       6
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+
+   year     team  wins  losses
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+5  2010    Lions     6      10
+6  2011    Lions    10       6
+7  2012    Lions     4      12
+’‘’
+```
+
