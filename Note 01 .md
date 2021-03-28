@@ -26,8 +26,32 @@ Allen|35|8.05|False
 
 1. 创建一个名为d的python字典，其中每个键都是一列的名称，而对应的值则是一个python序列
 ```python
+import pandas as pd     # 下边代码只是示例，并不能正确执行
 d = {'name:' Series(['Braund','Cummings','Heikkinen','Allen'],index = ['a','b','c','d']),
     'age': Series([22,38,26,35], index = ['a','b','c','d']),
     'fare': Series([7.25,7.83,8.05], index = ['a','b','d']),
     'survived': Series([False,True,True,False], index = ['a','b','c','d'])}
+```
+可执行代码：
+```python
+import pandas as pd
+series = pd.Series(['Dave','Cheng-Han','Udacity',42,-178910578])
+print(series)
+##
+series = pd.Series(['Dave','Cheng-Han',359,9001],
+                  index = ['Instructor','Curriculum Manager','Course Number','Power Level'])
+print(series)
+##
+series = pd.Series(['Dave', 'Cheng-Han', 359, 9001],
+                       index=['Instructor', 'Curriculum Manager',
+                              'Course Number', 'Power Level'])
+print(series['Instructor'])
+print("")
+print(series[['Instructor', 'Curriculum Manager', 'Course Number']])
+##
+cuteness = pd.Series([1,2,3,4,5],index = ['Cockroach','Fish','Mini Pig','Puppy','Kitten'])
+
+print(cuteness > 3)
+print("")
+print(cuteness[cuteness > 3])
 ```
