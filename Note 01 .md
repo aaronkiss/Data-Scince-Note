@@ -130,7 +130,23 @@ max    2012.000000  15.000000  12.000000
 7  2012    Lions     4      12
 ’‘’
 ```
+```
+# 第一种实现方法
+data = {'name':['Sarah','Mike','Chrisna'],
+       'ages':[28,32,25]}
+print(pd.DataFrame(data))
+print("")
+df[['name', 'ages']]
+print("")
+df.loc[0]
 
+# 第二种实现方法
+people = ['Sarah','Mike','Chrisna']
+ages = [28,32,25]
+df = pd.DataFrame({'name': pd.Series(people),
+               'ages': pd.Series(ages)})
+print(df)
+```
 运用**Pandas**和**Numpy**分析索契冬奥会各国的奖牌数量
 
 ```python
@@ -188,3 +204,7 @@ print(olympic_medal_counts_df)
 '''
 
 ```
+## 访问数据
+
+- 用`df[ '列的名子' ]`可以调用相应的列的数据。
+- 用`df.loc[ ]`可以调用相应行的数据。
