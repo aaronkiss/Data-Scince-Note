@@ -296,6 +296,124 @@ print(football[(football.wins > 10) & (football.team == "Packers")])    # 输出
 import pandas as pd
 import numpy as np
 
+countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
+              'Netherlands', 'Germany', 'Switzerland', 'Belarus',
+              'Austria', 'France', 'Poland', 'China', 'Korea', 
+              'Sweden', 'Czech Republic', 'Slovenia', 'Japan',
+              'Finland', 'Great Britain', 'Ukraine', 'Slovakia',
+             'Italy', 'Latvia', 'Australia', 'Croatia', 'Kazakhstan']
+gold = [13, 11, 10, 9, 8, 8, 6, 5, 4, 4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2, 2, 1, 0]
+bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
+    
+olympic_medal_counts = pd.DataFrame({
+'Countries': pd.Series(countries),
+'Gold': pd.Series(gold),
+'Silver': pd.Series(silver),
+'Bronze': pd.Series(bronze)
+})
+olympic_medal_counts_df = pd.DataFrame(olympic_medal_counts)
+    
+#print(olympic_medal_counts_df)
+#print(olympic_medal_counts_df.Gold)
+avg_gold = np.mean(olympic_medal_counts_df.Gold)    #输出金牌平均数
+avg_silver = np.mean(olympic_medal_counts_df.Silver)    #输出银牌平均数
+avg_bronze = np.mean(olympic_medal_counts_df.Bronze)    #输出铜牌平均数
 
+#print(avg_gold)
+#print(avg_silver)
+#print(avg_bronze)
+avgd = {'Avg Gold':avg_gold,'Avg Silver':avg_silver,'Avg Bronze':avg_bronze}
+avg_medal_count = pd.Series(data = avgd, index = ['Avg Gold','Avg Silver','Avg Bronze'])
+print(avg_medal_count)
 
+'''
+Avg Gold      3.807692
+Avg Silver    3.730769
+Avg Bronze    3.807692
+dtype: float64
+'''
+
+```
+## 矩阵和向量的乘法
+
+```python
+a = [1,2,3,4,5]
+b = [2,3,4,5,6]
+print(np.dot(a,b))
+
+```
+
+```python
+#规定每个金牌4分，每个银牌2分，每个铜牌1分。
+#使用numpy.dot函数，创建新的名为“olympic_points_df”的dataFrame，它包含：一列国家名称、一列“point”
+
+# 通过观察之前得到的矩阵可以发现，只要用这个矩阵成以向量[4,2,1]就可以得到每个国家累计得分的数据
+
+countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
+              'Netherlands', 'Germany', 'Switzerland', 'Belarus',
+              'Austria', 'France', 'Poland', 'China', 'Korea', 
+              'Sweden', 'Czech Republic', 'Slovenia', 'Japan',
+              'Finland', 'Great Britain', 'Ukraine', 'Slovakia',
+             'Italy', 'Latvia', 'Australia', 'Croatia', 'Kazakhstan']
+gold = [13, 11, 10, 9, 8, 8, 6, 5, 4, 4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2, 2, 1, 0]
+bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
+    
+olympic_medal_counts = pd.DataFrame({
+'Countries': pd.Series(countries),
+'Gold': pd.Series(gold),
+'Silver': pd.Series(silver),
+'Bronze': pd.Series(bronze)
+})
+olympic_medal_counts_df = pd.DataFrame(olympic_medal_counts)
+
+###
+
+olympic_counts_df = pd.DataFrame({'Gold': pd.Series(gold),
+                    'Silver': pd.Series(silver),
+                    'Bronze': pd.Series(bronze)})    #创建新的矩阵以包含各国的奖牌数
+
+olympic_points_df = np.dot(olympic_counts_df,[4,2,1])
+
+print(olympic_medal_counts_df)    #输出完整数据矩阵
+print("")
+print(olympic_counts_df)    #仅输出各国各奖牌数据
+print("")
+print(olympic_points_df)    #输出各国奖牌换算成分数的向量
+
+olympic_counties_points_df = pd.DataFrame({
+    'Countries': pd.Series(countries),
+    'Points': pd.Series(olympic_points_df)
+})    #创建带有国家名称的得分榜
+print(olympic_counties_points_df)
+'''
+         Countries  Points
+0     Russian Fed.      83
+1           Norway      64
+2           Canada      65
+3    United States      62
+4      Netherlands      55
+5          Germany      49
+6      Switzerland      32
+7          Belarus      21
+8          Austria      37
+9           France      31
+10          Poland      19
+11           China      22
+12           Korea      20
+13          Sweden      28
+14  Czech Republic      18
+15        Slovenia      16
+16           Japan      15
+17         Finland      11
+18   Great Britain       8
+19         Ukraine       5
+20        Slovakia       4
+21           Italy      10
+22          Latvia       6
+23       Australia       5
+24         Croatia       2
+25      Kazakhstan       1
+'''
 ```
