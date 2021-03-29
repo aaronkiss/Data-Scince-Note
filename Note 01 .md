@@ -287,6 +287,10 @@ print(football[(football.wins > 10) & (football.team == "Packers")])    # 输出
 4  2012  Packers    11       5
 '''
 ```
+## 向量化输出数据
+
+**lambda**函数是小型的内联函数，是在python中即时定义的。
+`lambda x: x >= 1`将接受x输入的值并返回 x >= 1 或等于 True或 False的布尔值。
 
 ```python
 import pandas as pd
