@@ -250,6 +250,7 @@ Name: year, dtype: int64
 '''
 
 print(football.year)    # 上一条语句的 另一种写法
+
 print(football[['year','wins','losses']])    #此语句小括号内的参数必须用 两套 方括号 [[]] 来标示！！
 '''
    year  wins  losses
@@ -262,5 +263,35 @@ print(football[['year','wins','losses']])    #此语句小括号内的参数必�
 6  2011    10       6
 7  2012     4      12
 '''
+
+print(football.iloc[[0]])    # 输出第0行的数据， 行号必须用 两套 方括号 [[]] 来标示！！
+'''
+   year   team  wins  losses
+0  2010  Bears    11       5
+'''
+
+print(football.loc[[0]])    # 同上一个语句的输出相同，但写法不同，这里需要查询资料确认
+
+print(football[football.wins > 10])    # 输出特定特征变量大于某数值的数据
+'''
+   year     team  wins  losses
+0  2010    Bears    11       5
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+'''
+
+print(football[(football.wins > 10) & (football.team == "Packers")])    # 输出 多个条件 同时具备 的数据
+'''
+   year     team  wins  losses
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+'''
 ```
 
+```python
+import pandas as pd
+import numpy as np
+
+
+
+```
