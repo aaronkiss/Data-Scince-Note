@@ -208,3 +208,59 @@ print(olympic_medal_counts_df)
 
 - 用`df[ '列的名子' ]`可以调用相应的列的数据。
 - 用`df.loc[ '列的索引']`可以调用相应行的数据。
+
+
+```python
+import pandas as pd
+import numpy as np
+
+data = {
+    'year':[2010,2011,2012,2011,2012,2010,2011,2012],
+    'team':['Bears','Bears','Bears','Packers','Packers','Lions','Lions','Lions'],
+    'wins':[11,8,10,15,11,6,10,4],
+    'losses':[5,8,6,1,5,10,6,12]
+    
+}
+
+football = pd.DataFrame(data)
+
+print(football)    #完成输出所有数据
+'''
+   year     team  wins  losses
+0  2010    Bears    11       5
+1  2011    Bears     8       8
+2  2012    Bears    10       6
+3  2011  Packers    15       1
+4  2012  Packers    11       5
+5  2010    Lions     6      10
+6  2011    Lions    10       6
+7  2012    Lions     4      12
+'''
+print(football['year'])    #输出年份列
+'''
+0    2010
+1    2011
+2    2012
+3    2011
+4    2012
+5    2010
+6    2011
+7    2012
+Name: year, dtype: int64
+'''
+
+print(football.year)    # 上一条语句的 另一种写法
+print(football[['year','wins','losses']])    #此语句小括号内的参数必须用 两套 方括号 [[]] 来标示！！
+'''
+   year  wins  losses
+0  2010    11       5
+1  2011     8       8
+2  2012    10       6
+3  2011    15       1
+4  2012    11       5
+5  2010     6      10
+6  2011    10       6
+7  2012     4      12
+'''
+```
+
